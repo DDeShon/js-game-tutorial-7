@@ -7,12 +7,12 @@ let canvasPosition = canvas.getBoundingClientRect();
 
 class Explosion {
   constructor(x, y) {
-    this.x = x;
-    this.y = y;
     this.spriteWidth = 200;
     this.spriteHeight = 179;
     this.width = this.spriteWidth * 0.7;
     this.height = this.spriteHeight * 0.7;
+    this.x = x - this.width / 2;
+    this.y = y - this.height / 2;
     this.image = new Image();
     this.image.src = "boom.png";
     this.frame = 0;
@@ -50,6 +50,9 @@ function animate() {
   for (let i = 0; i < explosions.length; i++) {
     explosions[i].update();
     explosions[i].draw();
+    if (explosion[i].frame > 5) {
+      explosions.splice(i, 1);
+    }
   }
   requestAnimationFrame(animate);
 }
