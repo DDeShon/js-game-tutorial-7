@@ -3,6 +3,7 @@ const ctx = canvas.getContext("2d");
 canvas.width = 500;
 canvas.height = 700;
 const explosions = [];
+let canvasPosition = canvas.getBoundingClientRect();
 
 class Explosion {
   constructor(x, y) {
@@ -20,6 +21,21 @@ class Explosion {
     this.frame++;
   }
   draw() {
-    ctx.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh);
+    ctx.drawImage(
+      this.image,
+      this.spriteWidth * this.frame,
+      0,
+      this.spriteWidth,
+      this.spriteHeight,
+      this.x,
+      this.y,
+      this.width,
+      this.height
+    );
   }
 }
+
+window.addEventListener("click", function (e) {
+  ctx.fillStyle = "white";
+  ctx.fillRect(e.x, e.y, 50, 50);
+});
