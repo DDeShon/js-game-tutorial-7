@@ -21,7 +21,7 @@ class Explosion {
   }
   update() {
     this.timer++;
-    if (this.timer % 5 === 0) {
+    if (this.timer % 10 === 0) {
       this.frame++;
     }
   }
